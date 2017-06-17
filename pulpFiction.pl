@@ -47,7 +47,23 @@ trabajaPara(Empleador, george) :-
 
 %------punto 4------
 
+esFiel(Persona) :-
+   persona(Persona),
+   not(noEsFiel(Persona)).
+   
+noEsFiel(Persona) :-
+   saleCon(Persona, Pareja),
+   saleCon(Persona, Pareja2),
+   Pareja \= Pareja2.
+   
 %------punto 5------
+
+acataOrden(Persona, Acatador) :-
+    trabajaPara(Empleador, Acatador),
+    acataOrden(Persona, Empleador).
+	
+acataOrden(Persona, Acatador) :-
+    trabajaPara(Persona, Acatador). 
 
 %------parte 2------
 
@@ -125,6 +141,40 @@ tieneCerca(Persona, Quien) :-
 	
 %------punto 8------
 
+nivelRespeto(Persona, Nivel) :-
+    personaje(Persona, Ocupacion),
+    nivelOcupacion(Ocupacion, Nivel).
+
+nivelRespeto(vincent, 15).	
+	
+nivelOcupacion(actriz(Peliculas), Nivel) :-
+    length(Peliculas, CantidadPeliculas),
+    Nivel is CantidadPeliculas / 10. 	
+
+nivelOcupacion(mafioso(resuelveProblemas), 10).
+    
+nivelOcupacion(mafioso(capo), 20).
+
 %------punto 9------
 
+respetabilidad(Respetables, NoRespetables) :-
+    persona(OtraPersona),
+    findall(Persona, esRespetado(Persona), PersonasRespetadas),
+    findall(OtraPersona, (not(esRespetado(OtraPersona))), PersonasNoRespetadas),
+    length(PersonasRespetadas, Respetables),
+    length(PersonasNoRespetadas, NoRespetables).
+	
+esRespetado(Persona) :-
+    nivelRespeto(Persona, Nivel),
+    Nivel > 9.	
+    
 %------punto 10------
+
+masAtareado(Persona) :-
+    cantidadEncargos(Persona, Encargos),
+    forall((cantidadEncargos(OtraPersona, OtrosEncargos), Persona \= OtraPersona), Encargos > OtrosEncargos).
+	
+cantidadEncargos(Persona, Encargos) :-
+    persona(Persona),
+    findall(Persona, encargo(_, Persona, _), CuantosEncargos),
+    length(CuantosEncargos, Encargos).
