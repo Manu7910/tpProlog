@@ -17,7 +17,7 @@ trabajaPara(marsellus, jules).
 trabajaPara(marsellus, winston).
  
 Todos los predicados deben ser inversibles en todos sus argumentos, a menos de que se especifique lo contrario.
-Salen juntos
+1) Salen juntos
 saleCon/2: relaciona dos personas que están saliendo porque son pareja, independientemente de cómo esté definido en el predicado pareja/2.
  
 Ejemplo: 
@@ -31,11 +31,13 @@ Cual = marsellus
 ... 
  
 La cláusula ¿es recursiva? En caso afirmativo separe caso base y caso recursivo.
-Más parejas
+
+2) Más parejas
 Necesitamos agregar la siguiente Información
 Bernardo es pareja de Bianca y de Charo
 No se sabe si Bianca es pareja de Demóstenes
-Nuevos trabajadores
+
+3) Nuevos trabajadores
 Necesitamos agregar más información
 Bernardo trabaja para cualquiera que trabaje para marsellus (salvo para jules) 
 George trabaja para todos los que salen con Bernardo
@@ -44,7 +46,7 @@ Ejemplo:
 ?- trabajaPara(Quien, bernardo).
 Quien = vincent ;
  
-?- trabajaPara(Empleador, george).
+4) ?- trabajaPara(Empleador, george).
 Empleador = bianca ;
 Empleador = charo.
 Fidelidad
@@ -63,7 +65,8 @@ not(5 = 6, 7 = 9) porque aquí not tendría aridad 2
 en cambio sí se puede utilizar 
 ?-  not((5 = 6, 7 = 9)).
 true
-Acatar órdenes
+
+5) Acatar órdenes
 Realizar el predicado acataOrden/2 que relaciona dos personas. Alguien acata la orden de otra persona si trabaja para esa persona directa o indirectamente (porque trabaja para otro que a su vez trabaja para esa persona, y así sucesivamente).
  
 Ejemplo:
@@ -115,7 +118,7 @@ amigo(vincent, jules).
 amigo(jules, jimmie).
 amigo(vincent, elVendedor).
  
-Personajes peligrosos
+6) Personajes peligrosos
  
 esPeligroso/1. Nos dice si un personaje es peligroso. Eso ocurre cuando:
 realiza alguna actividad peligrosa: ser matón, o robar licorerías. 
@@ -129,7 +132,7 @@ Quien = honeyBunny ; % roba licorerías
 Quien = bernardo ;   % tiene como jefe a Vincent, que como vemos es peligroso
 false.
  
-San Cayetano
+7) San Cayetano
  
 Se considera "San Cayetano" a quien a todos los que tiene cerca les da algún encargo (y tiene al menos a alguien cerca).
 Alguien tiene cerca a otro personaje si son amigos o uno trabaja para el otro. 
@@ -142,7 +145,7 @@ false.
  
 Bernardo es San Cayetano, porque tiene cerca tanto a Winston como a Vincent (sus jefes), y les pide que hagan cosas (¡Qué atrevido!).
  
-Nivel de Respeto
+8) Nivel de Respeto
  
 Realizar el predicado nivelRespeto/2 que relaciona a un personaje con su nivel de respeto.
 El nivel de respeto se calcula como:
@@ -166,7 +169,7 @@ Actua solo en una pelicula
 ?- nivelRespeto(vincent,Nivel).
 Nivel = 15
  
-Personajes respetables
+9) Personajes respetables
 Asumiendo que ya se sabe calcular el nivel de respeto de cualquier personaje, se quiere analizar la composición de personajes respetables de la película. Un personaje es respetable si su nivel de respeto es mayor a 9.
 Se quiere averiguar la cantidad de personajes respetables y no respetables.
  
@@ -174,7 +177,7 @@ Se quiere averiguar la cantidad de personajes respetables y no respetables.
 Respetables = 3
 NoRespetables = 9
  
-Más atareado
+10) Más atareado
  
 Se quiere averiguar cual es el personaje más atareado, que es quien más encargos tenga.
 Para ello es necesario definir también un predicado cantidadEncargos/2 que relaciona un personaje con la cantidad de encargos que le hicieron.
