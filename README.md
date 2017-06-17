@@ -5,11 +5,7 @@ Enunciado:
 
 Pulp Fiction
  
-Entrega 1: Relaciones entre individuos. Recursividad. Negación. 
- 
-Tarantino, un poco cansado después de largas horas de filmación de su clásico noventoso Pulp Fiction, decidió escribir un programa Prolog para entender mejor las relaciones entre sus personajes. 
- 
-Para ello nos entregó la siguiente base de conocimientos sobre sus personajes, parejas y actividades:
+# Entrega 1: Relaciones entre individuos. Recursividad. Negación. 
  
 %pareja(Persona, Persona)
 pareja(marsellus, mia).
@@ -84,7 +80,7 @@ La cláusula ¿es recursiva? En caso afirmativo separe caso base y caso recursiv
  
 
  
-Entrega 2: Polimorfismo. Functores. Aritmética. Predicados de orden superior.
+# Entrega 2: Polimorfismo. Functores. Aritmética. Predicados de orden superior.
  
 Agregamos la siguiente información a nuestra base de conocimientos
 % Información base
